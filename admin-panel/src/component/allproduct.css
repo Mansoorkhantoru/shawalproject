@@ -1,0 +1,192 @@
+/* allproduct.css - Warm Orange/Amber Theme */
+
+/* ===== Container ===== */
+.allproducts {
+  min-height: 100vh;
+  background: #0f0f1a;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* ===== Products Section ===== */
+.allproducts .products {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Search Input ===== */
+.allproducts .products > input[type="text"] {
+  width: 100%;
+  padding: 16px 24px;
+  border: 2px solid rgba(243, 156, 18, 0.12);
+  border-radius: 14px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ecf0f1;
+  margin-bottom: 2rem;
+}
+
+.allproducts .products > input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.allproducts .products > input[type="text"]:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ===== Products Grid ===== */
+.allproducts .products .products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== Product Card ===== */
+.allproducts .product {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(243, 156, 18, 0.06);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.allproducts .product:hover {
+  transform: translateY(-6px);
+  border-color: rgba(243, 156, 18, 0.2);
+  box-shadow: 0 8px 30px rgba(243, 156, 18, 0.08);
+}
+
+/* ===== Product Image ===== */
+.allproducts .product img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(243, 156, 18, 0.05);
+  transition: transform 0.4s ease;
+}
+
+.allproducts .product:hover img {
+  transform: scale(1.03);
+}
+
+/* ===== Product Text ===== */
+.allproducts .product .text {
+  padding: 1.2rem 1.2rem 1.5rem;
+}
+
+.allproducts .product .text h3 {
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 50px;
+}
+
+.allproducts .product .text p {
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+.allproducts .product .text p span {
+  color: #e74c3c;
+  text-decoration: line-through;
+  margin-left: 8px;
+  opacity: 0.6;
+}
+
+/* ===== Delete Button ===== */
+.allproducts .product .text button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.8rem;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.allproducts .product .text button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.3);
+}
+
+.allproducts .product .text button:active {
+  transform: scale(0.97);
+}
+
+/* ===== No Products ===== */
+.allproducts .products .products p {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #bdc3c7;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 2px dashed rgba(243, 156, 18, 0.1);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .allproducts {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .allproducts .products .products {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .allproducts .product img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .allproducts .products .products {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  
+  .allproducts .product .text {
+    padding: 0.8rem;
+  }
+  
+  .allproducts .product .text h3 {
+    font-size: 0.9rem;
+    min-height: 40px;
+  }
+  
+  .allproducts .product img {
+    height: 140px;
+  }
+  
+  .allproducts .product .text button {
+    font-size: 0.75rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .allproducts .products .products {
+    grid-template-columns: 1fr;
+  }
+}

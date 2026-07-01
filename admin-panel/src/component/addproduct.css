@@ -1,0 +1,210 @@
+/* addproduct.css - Warm Orange/Amber Theme */
+
+/* ===== Container ===== */
+.addproduct {
+  min-height: 100vh;
+  background: #0f0f1a;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* ===== Form Container ===== */
+.addproduct form {
+  flex: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(243, 156, 18, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ===== Title ===== */
+.addproduct form h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+/* ===== Input Fields ===== */
+.addproduct form input[type="text"],
+.addproduct form input[type="number"] {
+  padding: 14px 18px;
+  border: 2px solid rgba(243, 156, 18, 0.12);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ecf0f1;
+  width: 100%;
+}
+
+.addproduct form input[type="text"]::placeholder,
+.addproduct form input[type="number"]::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.addproduct form input[type="text"]:focus,
+.addproduct form input[type="number"]:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.addproduct form input[type="text"]:hover,
+.addproduct form input[type="number"]:hover {
+  border-color: rgba(243, 156, 18, 0.25);
+}
+
+/* ===== Description Input ===== */
+.addproduct form input[name="description"] {
+  height: 80px;
+  resize: vertical;
+  padding: 14px 18px;
+}
+
+/* ===== File Input ===== */
+.addproduct form input[type="file"] {
+  padding: 14px 18px;
+  border: 2px dashed rgba(243, 156, 18, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  color: #bdc3c7;
+  width: 100%;
+}
+
+.addproduct form input[type="file"]:hover {
+  border-color: #f39c12;
+  background: rgba(243, 156, 18, 0.05);
+}
+
+.addproduct form input[type="file"]::file-selector-button {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.addproduct form input[type="file"]::file-selector-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* ===== Checkbox ===== */
+.addproduct form h4 {
+  color: #ecf0f1;
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.addproduct form input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  accent-color: #f39c12;
+  cursor: pointer;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(243, 156, 18, 0.2);
+  transition: all 0.3s ease;
+}
+
+.addproduct form input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  border-color: #f39c12;
+}
+
+/* ===== Checkbox Container ===== */
+.addproduct form .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* ===== Submit Button ===== */
+.addproduct form button[type="submit"] {
+  padding: 16px;
+  background: linear-gradient(135deg, #f39c12, #e67e22, #d35400);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(243, 156, 18, 0.2);
+}
+
+.addproduct form button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 35px rgba(243, 156, 18, 0.3);
+}
+
+.addproduct form button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+/* ===== Sidebar Container ===== */
+.addproduct .link-btn {
+  flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .addproduct {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .addproduct form {
+    padding: 1.5rem;
+  }
+  
+  .addproduct form h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addproduct form {
+    padding: 1.2rem;
+  }
+  
+  .addproduct form h3 {
+    font-size: 1.3rem;
+  }
+  
+  .addproduct form input[type="text"],
+  .addproduct form input[type="number"] {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .addproduct form button[type="submit"] {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+}

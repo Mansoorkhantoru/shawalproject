@@ -1,45 +1,92 @@
-import React, { useState } from 'react'
-import "./Sidebar.css"
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import "./Sidebar.css";
 
-export default function Sidebar() {
+export default function Navbar() {
+  const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const logout = () => {
-    localStorage.removeItem("admin")
-    window.location.href = "/"
-  }
-  
-  const [sideBar, setSideBar] = useState(false)
-  
-  const sideBars = () => {
-    setSideBar(true)
-  }
-  
-  const removeSide = () => {
-    setSideBar(false)
-  }
-  
+    localStorage.removeItem("admin");
+    navigate("/");
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <div className='sidebar'>
-      <div className="sid">
-        {!sideBar ? (
-          <button onClick={sideBars} className='sidebtn'>
-            -<br />-<br />-
+    <nav className="admin-navbar">
+      <div className="admin-nav-container">
+        {/* Logo */}
+        <div className="admin-nav-logo">
+          <Link to="/" className="logo-link">
+            <span className="logo-icon">🛍️</span>
+            <span className="logo-text">Admin Panel</span>
+          </Link>
+        </div>
+
+        {/* Desktop Navigation Links */}
+        <div className="admin-nav-links">
+          <Link to="/allorders" className="nav-link">
+            <span className="nav-icon">📦</span>
+            Orders
+          </Link>
+          <Link to="/allproducts" className="nav-link">
+            <span className="nav-icon">🛍️</span>
+            All Products
+          </Link>
+          <Link to="/addproduct" className="nav-link">
+            <span className="nav-icon">➕</span>
+            Add Products
+          </Link>
+        </div>
+
+        {/* Logout Button */}
+        <div className="admin-nav-actions">
+          <button onClick={logout} className="logout-btn">
+            <span className="btn-icon">🚪</span>
+            Logout
           </button>
-        ) : (
-          <button onClick={removeSide} className='sidebtn'>X</button>
-        )}
-        
-        {sideBar && (
-          <div className="sideToggle open">
-            <a href="/allorders">📦 Orders</a>
-            <a href="/allproducts">🛍️ All Products</a>
-            <a href="/addproduct">➕ Add Products</a>
-            
-            <div className="log">
-              <button onClick={() => logout()}>🚪 Logout</button>
-            </div>
-          </div>
-        )}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button 
+          className="mobile-toggle" 
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
       </div>
-    </div>
-  )
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        <Link to="/allorders" className="mobile-link" onClick={closeMobileMenu}>
+          <span className="nav-icon">📦</span>
+          Orders
+        </Link>
+        <Link to="/allproducts" className="mobile-link" onClick={closeMobileMenu}>
+          <span className="nav-icon">🛍️</span>
+          All Products
+        </Link>
+        <Link to="/addproduct" className="mobile-link" onClick={closeMobileMenu}>
+          <span className="nav-icon">➕</span>
+          Add Products
+        </Link>
+        <button onClick={() => { logout(); closeMobileMenu(); }} className="mobile-logout-btn">
+          <span className="btn-icon">🚪</span>
+          Logout
+        </button>
+      </div>
+    </nav>
+  );
 }

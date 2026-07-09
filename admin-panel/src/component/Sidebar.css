@@ -1,170 +1,319 @@
-/* Sidebar.css - Warm Orange/Amber Theme */
-
-/* ===== Container ===== */
-.sidebar {
-  position: relative;
-  z-index: 100;
+/* ===== ADMIN NAVBAR ===== */
+.admin-navbar {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.sid {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-/* ===== Toggle Button ===== */
-.sidebtn {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  line-height: 0.8;
-  min-width: 48px;
-  min-height: 48px;
+.admin-nav-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2);
+  justify-content: space-between;
+  height: 70px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.sidebtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 25px rgba(243, 156, 18, 0.3);
+/* ===== LOGO ===== */
+.admin-nav-logo .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
 }
 
-.sidebtn:active {
-  transform: scale(0.95);
+.admin-nav-logo .logo-link:hover {
+  transform: scale(1.02);
 }
 
-/* ===== Sidebar Toggle Panel ===== */
-.sideToggle {
+.logo-icon {
+  font-size: 1.8rem;
+  animation: bounceLogo 3s ease-in-out infinite;
+}
+
+@keyframes bounceLogo {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(-5deg); }
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #f093fb, #f5576c, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== NAV LINKS ===== */
+.admin-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.nav-link::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 60px;
-  background: linear-gradient(145deg, #1a1a2e, #16213e);
-  padding: 1.2rem 1.5rem;
-  border-radius: 16px;
-  border: 1px solid rgba(243, 156, 18, 0.1);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f093fb, #f5576c, #667eea);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+  width: 60%;
+}
+
+.nav-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link .nav-icon {
+  font-size: 1.1rem;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.admin-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.logout-btn .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* ===== MOBILE TOGGLE ===== */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hamburger Icon */
+.hamburger {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  min-width: 200px;
-  animation: slideIn 0.3s ease;
+  gap: 5px;
+  width: 28px;
+  transition: all 0.3s ease;
 }
 
-@keyframes slideIn {
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 16px 20px 24px;
+  gap: 4px;
+  background: rgba(15, 12, 41, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu.open {
+  display: flex;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-/* ===== Sidebar Links ===== */
-.sideToggle a {
-  color: #bdc3c7;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 0.95rem;
+.mobile-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.sideToggle a:hover {
-  background: rgba(243, 156, 18, 0.08);
-  color: #f39c12;
-  transform: translateX(4px);
-}
-
-.sideToggle a:active {
-  transform: scale(0.97);
-}
-
-/* ===== Logout Button ===== */
-.log {
-  margin-top: 0.5rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid rgba(243, 156, 18, 0.06);
-}
-
-.log button {
-  width: 100%;
-  padding: 10px 16px;
-  background: rgba(231, 76, 60, 0.1);
-  color: #e74c3c;
-  border: 1px solid rgba(231, 76, 60, 0.15);
-  border-radius: 10px;
-  font-size: 0.95rem;
+  gap: 12px;
+  padding: 14px 16px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
   font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.mobile-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.mobile-link .nav-icon {
+  font-size: 1.2rem;
+}
+
+.mobile-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  margin-top: 4px;
 }
 
-.log button:hover {
-  background: #e74c3c;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+.mobile-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
 }
 
-.log button:active {
-  transform: scale(0.97);
+.mobile-logout-btn .btn-icon {
+  font-size: 1.2rem;
 }
 
-/* ===== Responsive ===== */
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .admin-navbar {
+    padding: 0 20px;
+  }
+}
+
 @media (max-width: 768px) {
-  .sideToggle {
-    left: 0;
-    top: 55px;
-    min-width: 180px;
-    padding: 1rem;
+  .admin-nav-links {
+    display: none;
   }
   
-  .sidebtn {
-    padding: 10px 14px;
-    font-size: 1rem;
-    min-width: 42px;
-    min-height: 42px;
+  .admin-nav-actions .logout-btn {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .admin-nav-container {
+    height: 60px;
+  }
+  
+  .admin-nav-logo .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .logo-icon {
+    font-size: 1.4rem;
   }
 }
 
 @media (max-width: 480px) {
-  .sideToggle {
-    min-width: 160px;
-    padding: 0.8rem;
+  .admin-navbar {
+    padding: 0 12px;
   }
   
-  .sideToggle a {
-    font-size: 0.85rem;
-    padding: 8px 12px;
+  .admin-nav-container {
+    height: 55px;
   }
   
-  .log button {
-    font-size: 0.85rem;
-    padding: 8px 12px;
+  .admin-nav-logo .logo-text {
+    font-size: 0.95rem;
   }
   
-  .sidebtn {
-    padding: 8px 12px;
+  .logo-icon {
+    font-size: 1.2rem;
+  }
+  
+  .mobile-menu {
+    padding: 12px 16px 20px;
+  }
+  
+  .mobile-link {
+    padding: 12px 14px;
     font-size: 0.9rem;
-    min-width: 38px;
-    min-height: 38px;
+  }
+  
+  .mobile-logout-btn {
+    padding: 12px 14px;
+    font-size: 0.9rem;
   }
 }

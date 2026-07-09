@@ -16,7 +16,7 @@ export default function UserOrders({ user }) {
     const fetchAllOrders = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("http://localhost:3000/allorders");
+            const response = await axios.get("https://shwalbackend-production.up.railway.app/allorders");
             console.log("All orders:", response.data.orders); // Debug log
             setAllOrders(response.data.orders || []);
         } catch (error) {

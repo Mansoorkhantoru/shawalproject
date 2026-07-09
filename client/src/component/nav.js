@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import "./Nav.css";
 import axios from 'axios';
-import { FaShoppingCart, FaPhone, FaTimes, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaShoppingCart, FaPhone, FaTimes, FaTrash, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Nav({ cartt, setCart, removeFromCart }) {
+    const navigate = useNavigate();
     const [showCart, setShowCart] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
     const [phone, setPhone] = useState("");
@@ -13,21 +14,32 @@ export default function Nav({ cartt, setCart, removeFromCart }) {
     const [name, setName] = useState("");
     const [prescription, setPrescription] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
     const toggleCart = () => {
         setShowCart(!showCart);
         if (showDetails) setShowDetails(false);
+        if (showUserMenu) setShowUserMenu(false);
     };
 
     const toggleDetails = () => {
         setShowDetails(!showDetails);
         if (showCart) setShowCart(false);
+        if (showUserMenu) setShowUserMenu(false);
+    };
+
+    const toggleUserMenu = () => {
+        setShowUserMenu(!showUserMenu);
+        if (showCart) setShowCart(false);
+        if (showDetails) setShowDetails(false);
     };
 
     const closeAll = () => {
         setShowCart(false);
         setShowDetails(false);
+        setShowUserMenu(false);
     };
+
 
     const PlaceOrder = async (e) => {
         e.preventDefault();
@@ -62,7 +74,7 @@ export default function Nav({ cartt, setCart, removeFromCart }) {
                 )
             );
 
-            await axios.post("http://localhost:3000/order", formData, {
+            await axios.post("https://shwalbackend-production.up.railway.app/order", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -98,7 +110,7 @@ export default function Nav({ cartt, setCart, removeFromCart }) {
             <div className="nav-container">
                 <div className="nav-logo">
                     <Link to="/" className="logo-link">
-                        <h2>🛍️ Store</h2>
+                        <h2>🛍️ Mk Shop</h2>
                     </Link>
                 </div>
 
@@ -118,6 +130,9 @@ export default function Nav({ cartt, setCart, removeFromCart }) {
                         <FaShoppingCart />
                         <span className="cart-badge">{cartt.length}</span>
                     </button>
+
+                    {/* User Menu */}
+                   
                 </div>
             </div>
 
